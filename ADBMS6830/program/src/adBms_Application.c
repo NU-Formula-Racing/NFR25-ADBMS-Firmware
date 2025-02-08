@@ -22,6 +22,7 @@ and its licensor.
 #include "adBms6830GenericType.h"
 #include "serialPrintResult.h"
 #include "mcuWrapper.h"
+#include "adbms_main.h"
 #ifdef MBED
 extern Serial pc;
 #endif
@@ -69,8 +70,17 @@ void adbms_main()
 {
   //printMenu();
   adBms6830_init_config(TOTAL_IC, &IC[0]);
+
+  // SETUP 
+  adbms_main_setup();
+
+
   while(1)
   {
+    // LOOP
+    adbms_main_loop();
+
+    /*
     int user_command;
 #ifdef MBED
     pc.scanf("%d", &user_command);
@@ -80,8 +90,11 @@ void adbms_main()
     printf("Enter cmd:%d\n", user_command);
 #endif
     run_command(user_command);
+    */
   }
 }
+
+// funcs
 
 void run_command(int cmd)
 {
