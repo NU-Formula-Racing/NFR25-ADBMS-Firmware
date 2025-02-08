@@ -1,0 +1,12 @@
+C:/Analog Devices/ADBMS6830_Free_Source_Code-Rel1.0.1/Other_Workbench/ADBMS6830/lib/src/adBms6830GenericType.c:75:10:Pec15_Calc	2
+C:/Analog Devices/ADBMS6830_Free_Source_Code-Rel1.0.1/Other_Workbench/ADBMS6830/lib/src/adBms6830GenericType.c:91:10:pec10_calc	7
+C:/Analog Devices/ADBMS6830_Free_Source_Code-Rel1.0.1/Other_Workbench/ADBMS6830/lib/src/adBms6830GenericType.c:151:6:spiSendCmd	1
+C:/Analog Devices/ADBMS6830_Free_Source_Code-Rel1.0.1/Other_Workbench/ADBMS6830/lib/src/adBms6830GenericType.c:186:6:spiReadData	5
+C:/Analog Devices/ADBMS6830_Free_Source_Code-Rel1.0.1/Other_Workbench/ADBMS6830/lib/src/adBms6830GenericType.c:265:6:spiWriteData	3
+C:/Analog Devices/ADBMS6830_Free_Source_Code-Rel1.0.1/Other_Workbench/ADBMS6830/lib/src/adBms6830GenericType.c:343:6:adBmsReadData	51
+C:/Analog Devices/ADBMS6830_Free_Source_Code-Rel1.0.1/Other_Workbench/ADBMS6830/lib/src/adBms6830GenericType.c:603:6:adBmsWriteData	21
+C:/Analog Devices/ADBMS6830_Free_Source_Code-Rel1.0.1/Other_Workbench/ADBMS6830/lib/src/adBms6830GenericType.c:719:10:adBmsPollAdc	2
+C:/Analog Devices/ADBMS6830_Free_Source_Code-Rel1.0.1/Other_Workbench/ADBMS6830/lib/src/adBms6830GenericType.c:766:6:adBms6830_Adcv	1
+C:/Analog Devices/ADBMS6830_Free_Source_Code-Rel1.0.1/Other_Workbench/ADBMS6830/lib/src/adBms6830GenericType.c:800:6:adBms6830_Adsv	1
+C:/Analog Devices/ADBMS6830_Free_Source_Code-Rel1.0.1/Other_Workbench/ADBMS6830/lib/src/adBms6830GenericType.c:832:6:adBms6830_Adax	1
+C:/Analog Devices/ADBMS6830_Free_Source_Code-Rel1.0.1/Other_Workbench/ADBMS6830/lib/src/adBms6830GenericType.c:859:6:adBms6830_Adax2	1
