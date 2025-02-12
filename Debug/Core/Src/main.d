@@ -37,17 +37,14 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../USB_DEVICE/App/usb_device.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  ../USB_DEVICE/Target/usbd_conf.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/adBms_Application.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/adbms_main.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/common.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830Data.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/common.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830GenericType.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/adbms_main.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830ParseCreate.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830Data.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/mcuWrapper.h \
- ../Core/Inc/stm32f4xx_it.h
+ ../ADBMS6830/program/inc/adBms_Application.h \
+ ../ADBMS6830/program/inc/adbms_main.h ../ADBMS6830/program/inc/common.h \
+ ../ADBMS6830/lib/inc/adBms6830Data.h ../ADBMS6830/program/inc/common.h \
+ ../ADBMS6830/lib/inc/adBms6830GenericType.h \
+ ../ADBMS6830/program/inc/adbms_main.h \
+ ../ADBMS6830/lib/inc/adBms6830ParseCreate.h \
+ ../ADBMS6830/lib/inc/adBms6830Data.h \
+ ../ADBMS6830/program/inc/mcuWrapper.h ../Core/Inc/stm32f4xx_it.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -87,14 +84,14 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../USB_DEVICE/App/usb_device.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
 ../USB_DEVICE/Target/usbd_conf.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/adBms_Application.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/adbms_main.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/common.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830Data.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/common.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830GenericType.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/adbms_main.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830ParseCreate.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830Data.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/mcuWrapper.h:
+../ADBMS6830/program/inc/adBms_Application.h:
+../ADBMS6830/program/inc/adbms_main.h:
+../ADBMS6830/program/inc/common.h:
+../ADBMS6830/lib/inc/adBms6830Data.h:
+../ADBMS6830/program/inc/common.h:
+../ADBMS6830/lib/inc/adBms6830GenericType.h:
+../ADBMS6830/program/inc/adbms_main.h:
+../ADBMS6830/lib/inc/adBms6830ParseCreate.h:
+../ADBMS6830/lib/inc/adBms6830Data.h:
+../ADBMS6830/program/inc/mcuWrapper.h:
 ../Core/Inc/stm32f4xx_it.h:

@@ -1,0 +1,2 @@
+../Core/Src/adbms_mainboard.c:1:6:adbms_mainbaord_setup	4	static
+../Core/Src/adbms_mainboard.c:5:6:adbms_mainboard_loop	4	static

@@ -57,6 +57,32 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define Current_ADC_Pin GPIO_PIN_2
+#define Current_ADC_GPIO_Port GPIOA
+#define GPIO_SPI_CSB_Pin GPIO_PIN_4
+#define GPIO_SPI_CSB_GPIO_Port GPIOA
+#define SD_Contactors_ADC_Pin GPIO_PIN_1
+#define SD_Contactors_ADC_GPIO_Port GPIOB
+#define Comms_6822_State_GPIO_Pin GPIO_PIN_15
+#define Comms_6822_State_GPIO_GPIO_Port GPIOB
+#define Charger_GPIO_Pin GPIO_PIN_7
+#define Charger_GPIO_GPIO_Port GPIOC
+#define IMD_Status_GPIO_Pin GPIO_PIN_8
+#define IMD_Status_GPIO_GPIO_Port GPIOC
+#define BMS_Status_GPIO_Pin GPIO_PIN_9
+#define BMS_Status_GPIO_GPIO_Port GPIOC
+#define Contactor_N_Ctrl_GPIO_Pin GPIO_PIN_8
+#define Contactor_N_Ctrl_GPIO_GPIO_Port GPIOA
+#define Contactor_P_Ctrl_GPIO_Pin GPIO_PIN_9
+#define Contactor_P_Ctrl_GPIO_GPIO_Port GPIOA
+#define Contactor_Pre_Ctrl_GPIO_Pin GPIO_PIN_10
+#define Contactor_Pre_Ctrl_GPIO_GPIO_Port GPIOA
+#define LED1_GPIO_Pin GPIO_PIN_5
+#define LED1_GPIO_GPIO_Port GPIOB
+#define LED2_GPIO_Pin GPIO_PIN_6
+#define LED2_GPIO_GPIO_Port GPIOB
+#define LED3_GPIO_Pin GPIO_PIN_7
+#define LED3_GPIO_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

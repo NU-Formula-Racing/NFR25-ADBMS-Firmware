@@ -100,15 +100,15 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     PA2     ------> ADC1_IN2
     PB1     ------> ADC1_IN9
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_2;
+    GPIO_InitStruct.Pin = Current_ADC_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+    HAL_GPIO_Init(Current_ADC_GPIO_Port, &GPIO_InitStruct);
 
-    GPIO_InitStruct.Pin = GPIO_PIN_1;
+    GPIO_InitStruct.Pin = SD_Contactors_ADC_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+    HAL_GPIO_Init(SD_Contactors_ADC_GPIO_Port, &GPIO_InitStruct);
 
   /* USER CODE BEGIN ADC1_MspInit 1 */
 
@@ -138,9 +138,9 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
     PA2     ------> ADC1_IN2
     PB1     ------> ADC1_IN9
     */
-    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_2);
+    HAL_GPIO_DeInit(Current_ADC_GPIO_Port, Current_ADC_Pin);
 
-    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_1);
+    HAL_GPIO_DeInit(SD_Contactors_ADC_GPIO_Port, SD_Contactors_ADC_Pin);
 
   /* USER CODE BEGIN ADC1_MspDeInit 1 */
 

@@ -1,9 +1,9 @@
 ADBMS6830/program/src/serialPrintResult.o: \
  C:/Analog\ Devices/ADBMS6830_Free_Source_Code-Rel1.0.1/Other_Workbench/ADBMS6830/program/src/serialPrintResult.c \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/common.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/serialPrintResult.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/adbms_main.h \
- ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+ ../ADBMS6830/program/inc/common.h \
+ ../ADBMS6830/program/inc/serialPrintResult.h \
+ ../ADBMS6830/program/inc/adbms_main.h ../Core/Inc/main.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -38,17 +38,15 @@ ADBMS6830/program/src/serialPrintResult.o: \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/common.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830Data.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830GenericType.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/adbms_main.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830ParseCreate.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830Data.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/mcuWrapper.h \
- ../Core/Inc/stm32f4xx_it.h
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/common.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/serialPrintResult.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/adbms_main.h:
+ ../ADBMS6830/program/inc/common.h ../ADBMS6830/lib/inc/adBms6830Data.h \
+ ../ADBMS6830/lib/inc/adBms6830GenericType.h \
+ ../ADBMS6830/program/inc/adbms_main.h \
+ ../ADBMS6830/lib/inc/adBms6830ParseCreate.h \
+ ../ADBMS6830/lib/inc/adBms6830Data.h \
+ ../ADBMS6830/program/inc/mcuWrapper.h ../Core/Inc/stm32f4xx_it.h
+../ADBMS6830/program/inc/common.h:
+../ADBMS6830/program/inc/serialPrintResult.h:
+../ADBMS6830/program/inc/adbms_main.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -85,11 +83,11 @@ C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/common.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830Data.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830GenericType.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/adbms_main.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830ParseCreate.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/lib/inc/adBms6830Data.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/mcuWrapper.h:
+../ADBMS6830/program/inc/common.h:
+../ADBMS6830/lib/inc/adBms6830Data.h:
+../ADBMS6830/lib/inc/adBms6830GenericType.h:
+../ADBMS6830/program/inc/adbms_main.h:
+../ADBMS6830/lib/inc/adBms6830ParseCreate.h:
+../ADBMS6830/lib/inc/adBms6830Data.h:
+../ADBMS6830/program/inc/mcuWrapper.h:
 ../Core/Inc/stm32f4xx_it.h:

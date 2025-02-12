@@ -1,9 +1,8 @@
 ADBMS6830/program/src/mcuWrapper.o: \
  C:/Analog\ Devices/ADBMS6830_Free_Source_Code-Rel1.0.1/Other_Workbench/ADBMS6830/program/src/mcuWrapper.c \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/common.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/mcuWrapper.h \
- C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/common.h \
- ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+ ../ADBMS6830/program/inc/common.h ../ADBMS6830/program/inc/mcuWrapper.h \
+ ../ADBMS6830/program/inc/common.h ../Core/Inc/main.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -39,9 +38,9 @@ ADBMS6830/program/src/mcuWrapper.o: \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
  ../Core/Inc/stm32f4xx_it.h
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/common.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/mcuWrapper.h:
-C:/Users/drake/STM32CubeIDE/workspace_1.17.0/ADI_BMS_Mainboard/ADBMS6830/program/inc/common.h:
+../ADBMS6830/program/inc/common.h:
+../ADBMS6830/program/inc/mcuWrapper.h:
+../ADBMS6830/program/inc/common.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
