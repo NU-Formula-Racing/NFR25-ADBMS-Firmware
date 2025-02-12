@@ -80,8 +80,14 @@ void Initialize() {
     fsm_set_state("idle");
 }
 
+void Tick() {
+    feed watchdog;
+    UpdateValues();
+    CheckFaults();
+    fsm_run();
+}
+
 void UpdateValues() {
-    get current from ADBMS;
     get voltages from ADBMS;
     get temp from ADBMS;
     calculate the SOE;  // ignore for now
@@ -100,13 +106,6 @@ void CheckFaults() {
     check timeout fault; (watchdog not fed)
 
     raise fault flag if any fault is true;
-}
-
-void Tick() {
-    feed watchdog;
-    UpdateValues();
-    CheckFaults();
-    fsm_run();
 }
 
 void idle_on_enter() { 
@@ -185,6 +184,12 @@ bool transition_precharge_to_active() {
 
 bool transition_charge_to_active() {
     if (charge bit unset) return true;
+    return false;
+}
+
+// Transition to charge
+bool transition_active_to_charge(){
+    if (charge pin is high) return true;
     return false;
 }
 

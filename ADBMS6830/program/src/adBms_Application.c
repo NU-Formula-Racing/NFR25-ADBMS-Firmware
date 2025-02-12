@@ -78,7 +78,7 @@ void adbms_main()
   while(1)
   {
     // LOOP
-    adbms_main_loop();
+    // tick timer group with adbms_main_loop is the 
 
     /*
     int user_command;
