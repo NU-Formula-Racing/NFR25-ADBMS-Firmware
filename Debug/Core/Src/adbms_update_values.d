@@ -1,5 +1,6 @@
-ADBMS6830/lib/src/adBms6830GenericType.o: \
- C:/Analog\ Devices/ADBMS6830_Free_Source_Code-Rel1.0.1/Other_Workbench/ADBMS6830/lib/src/adBms6830GenericType.c \
+Core/Src/adbms_update_values.o: ../Core/Src/adbms_update_values.c \
+ ../Core/Inc/adbms_update_values.h \
+ ../ADBMS6830/program/inc/adBMS_Application.h \
  ../ADBMS6830/program/inc/adbms_main.h ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
@@ -39,9 +40,13 @@ ADBMS6830/lib/src/adBms6830GenericType.o: \
  ../ADBMS6830/program/inc/common.h ../ADBMS6830/lib/inc/adBms6830Data.h \
  ../ADBMS6830/program/inc/common.h \
  ../ADBMS6830/lib/inc/adBms6830GenericType.h \
+ ../ADBMS6830/program/inc/adbms_main.h \
  ../ADBMS6830/lib/inc/adBms6830ParseCreate.h \
  ../ADBMS6830/lib/inc/adBms6830Data.h \
- ../ADBMS6830/program/inc/mcuWrapper.h ../Core/Inc/stm32f4xx_it.h
+ ../ADBMS6830/program/inc/mcuWrapper.h ../Core/Inc/stm32f4xx_it.h \
+ ../Core/Inc/adbms_mainboard.h
+../Core/Inc/adbms_update_values.h:
+../ADBMS6830/program/inc/adBMS_Application.h:
 ../ADBMS6830/program/inc/adbms_main.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -83,7 +88,9 @@ ADBMS6830/lib/src/adBms6830GenericType.o: \
 ../ADBMS6830/lib/inc/adBms6830Data.h:
 ../ADBMS6830/program/inc/common.h:
 ../ADBMS6830/lib/inc/adBms6830GenericType.h:
+../ADBMS6830/program/inc/adbms_main.h:
 ../ADBMS6830/lib/inc/adBms6830ParseCreate.h:
 ../ADBMS6830/lib/inc/adBms6830Data.h:
 ../ADBMS6830/program/inc/mcuWrapper.h:
 ../Core/Inc/stm32f4xx_it.h:
+../Core/Inc/adbms_mainboard.h:

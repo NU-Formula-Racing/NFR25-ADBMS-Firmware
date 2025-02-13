@@ -4,6 +4,7 @@
 "./ADBMS6830/program/src/mcuWrapper.o"
 "./ADBMS6830/program/src/serialPrintResult.o"
 "./Core/Src/adbms_mainboard.o"
+"./Core/Src/adbms_update_values.o"
 "./Core/Src/main.o"
 "./Core/Src/stm32f4xx_hal_msp.o"
 "./Core/Src/stm32f4xx_it.o"
