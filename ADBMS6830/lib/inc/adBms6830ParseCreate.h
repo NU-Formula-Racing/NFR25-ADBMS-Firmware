@@ -10,14 +10,14 @@ and its licensor.
 * Developed by: ADIBMS Software team, Bangalore, India
 *****************************************************************************/
 /** @addtogroup BMS_DRIVER
-*  @{
-*
-*/
+ *  @{
+ *
+ */
 
 /** @addtogroup PARSE_CREATE PARSE CREATE DATA
-*  @{
-*
-*/
+ *  @{
+ *
+ */
 #ifndef __ADBMSPARSECREATE_H
 #define __ADBMSPARSECREATE_H
 
