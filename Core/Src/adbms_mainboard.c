@@ -2,6 +2,12 @@
 #define FSM_IMPL
 adbms_ adbms;
 
+
+#define Contactor_N_ctrl_pin GPIO_PIN_8
+#define Contactor_P_ctrl_pin GPIO_PIN_9
+#define Contactor_Pre_ctrl_pin GPIO_PIN_10
+
+
 void adbms_mainbaord_setup()
 {
     // initialize the contactors;
@@ -56,14 +62,17 @@ void drive_can_loop()
 
 void CheckFaults()
 {
-    // check overvoltage fault;
-    // check undervoltage fault;
+    // check overvoltage fault;  --> has register for it
+    // check undervoltage fault;   --> has register for it
     // check overcurrent fault;
     // check overtemperature fault;
     // check undertemperature fault;
     // check external kill fault;
     // check timeout fault; (watchdog not fed)
-
+    
+    fault_ = undervoltage_fault_ || overvoltage_fault_ || overvoltage_fault_ ||
+             overvoltage_fault_ || undervoltage_fault_ || external_kill_fault_ ||
+             timeout_fault_;
     // raise fault flag if any fault is true;
 }
 
@@ -72,33 +81,48 @@ void CheckFaults()
 // On_Enters
 void idle_on_enter()
 {
-    printf("entering idle...");
+    printf("entering idle...\n");
+
     // open contactors;
+    HAL_GPIO_WritePin(GPIOA, Contactor_N_ctrl_pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOA, Contactor_P_ctrl_pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOA, Contactor_Pre_ctrl_pin, GPIO_PIN_RESET);
+
     // send idle msg;
 }
 void precharge_on_enter()
 {
-    printf("entering precharge...");
+    printf("entering precharge...\n");
+
     // turn on P contactor
+    HAL_GPIO_WritePin(GPIOA, Contactor_P_ctrl_pin, GPIO_PIN_SET);
     // turn on Pre contactor;
+    HAL_GPIO_WritePin(GPIOA, Contactor_Pre_ctrl_pin, GPIO_PIN_SET);
 }
 void active_on_enter()
 {
-    printf("entering active...");
+    printf("entering active...\n");
     // turn on N contactor;
+    HAL_GPIO_WritePin(GPIOA, Contactor_N_ctrl_pin, GPIO_PIN_SET);
     // delay(0.1 sec);
+    HAL_Delay(100);
     // turn off Pre contactor;
+     HAL_GPIO_WritePin(GPIOA, Contactor_Pre_ctrl_pin, GPIO_PIN_SET);
     // send active msg;
+
 }
 void charge_on_enter()
 {
-    printf("entering charge...");
+    printf("entering charge...\n");
     // send initial/start msg to charger;
 }
 void fault_on_enter()
 {
-    printf("entering fault...");
+    printf("entering fault...\n");
     // open (turn off) all contactors;
+    HAL_GPIO_WritePin(GPIOA, Contactor_N_ctrl_pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOA, Contactor_P_ctrl_pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOA, Contactor_Pre_ctrl_pin, GPIO_PIN_RESET);
     // send fault msg;
 }
 
@@ -136,13 +160,13 @@ void fault_on_exit() { printf("exiting fault..."); }
 // Transition to idle
 bool transition_active_to_idle()
 {
-    if (ECU or charger requests idle)
+    if (/*ECU or charger requests idle*/true)
         return true;
     return false;
 }
 bool transition_fault_to_idle()
 {
-    if (fault flag is cleared)
+    if (!fault_)
         return true;
     return false;
 }
@@ -150,7 +174,7 @@ bool transition_fault_to_idle()
 // Transition to precharge
 bool transition_idle_to_precharge()
 {
-    if (ECU / Charger signals precharge transition)
+    if (/*ECU / Charger signals precharge transition*/true)
         return true;
     return false;
 }
@@ -158,14 +182,14 @@ bool transition_idle_to_precharge()
 // Transition to active
 bool transition_precharge_to_active()
 {
-    if (ECU signals active transition)
+    if (/*ECU signals active transition*/true)
         return true;
     return false;
 }
 
 bool transition_charge_to_active()
 {
-    if (charge bit unset)
+    if (/*charge bit unset*/true)
         return true;
     return false;
 }
@@ -173,7 +197,7 @@ bool transition_charge_to_active()
 // Transition to charge
 bool transition_active_to_charge()
 {
-    if (charge pin is high)
+    if (/*charge pin is high*/true)
         return true;
     return false;
 }
@@ -181,7 +205,7 @@ bool transition_active_to_charge()
 // Transition to fault
 bool transition_to_fault()
 {
-    if (fault flag is raised)
+    if (fault_)
         return true;
     return false;
 }
@@ -189,24 +213,43 @@ bool transition_to_fault()
 // Add FSM states
 void FSMAddStates()
 {
-    fsm_add_state("idle");
-    fsm_add_state("precharge");
-    fsm_add_state("active");
-    fsm_add_state("charge");
-    fsm_add_state("fault");
+    fsm_add_state(g_fsm, (fsm_state_t){.name = "Idle",
+                                     .on_enter = idle_on_enter,
+                                     .on_update = idle_on_update,
+                                     .on_exit = idle_on_exit});
+
+    fsm_add_state(g_fsm, (fsm_state_t){.name = "Precharge",
+                                     .on_enter = precharge_on_enter,
+                                     .on_update = precharge_on_update,
+                                     .on_exit = precharge_on_exit});
+
+    fsm_add_state(g_fsm, (fsm_state_t){.name = "Active",
+                                     .on_enter = active_on_enter,
+                                     .on_update = active_on_update,
+                                     .on_exit = active_on_exit});
+
+    fsm_add_state(g_fsm, (fsm_state_t){.name = "Charge",
+                                     .on_enter = charge_on_enter,
+                                     .on_update = charge_on_update,
+                                     .on_exit = charge_on_exit});
+
+    fsm_add_state(g_fsm, (fsm_state_t){.name = "Fault",
+                                     .on_enter = fault_on_enter,
+                                     .on_update = fault_on_update,
+                                     .on_exit = fault_on_exit});
 }
 
 // Add transitions to the FSM states
 void FSMAddTransitions()
 {
-    fsm_add_transition("idle", "precharge", transition_idle_to_precharge);
-    fsm_add_transition("idle", "fault", transition_to_fault);
-    fsm_add_transition("precharge", "active", transition_precharge_to_active);
-    fsm_add_transition("precharge", "fault", transition_to_fault);
-    fsm_add_transition("active", "charge", transition_active_to_charge);
-    fsm_add_transition("active", "idle", transition_active_to_idle);
-    fsm_add_transition("active", "fault", transition_to_fault);
-    fsm_add_transition("charge", "active", transition_charge_to_active);
-    fsm_add_transition("charge", "fault", transition_to_fault);
-    fsm_add_transition("fault", "idle", transition_fault_to_idle);
+    fsm_add_transition(g_fsm, "Idle", "Precharge", FSM_PREDICATE_GROUP(transition_idle_to_precharge));
+    fsm_add_transition(g_fsm, "Idle", "Fault", FSM_PREDICATE_GROUP(transition_to_fault));
+    fsm_add_transition(g_fsm, "Precharge", "Active", FSM_PREDICATE_GROUP(transition_precharge_to_active));
+    fsm_add_transition(g_fsm, "Precharge", "Fault", FSM_PREDICATE_GROUP(transition_to_fault));
+    fsm_add_transition(g_fsm, "Active", "Charge", FSM_PREDICATE_GROUP(transition_active_to_charge));
+    fsm_add_transition(g_fsm, "Active", "Idle", FSM_PREDICATE_GROUP(transition_active_to_idle));
+    fsm_add_transition(g_fsm, "Active", "Fault", FSM_PREDICATE_GROUP(transition_to_fault));
+    fsm_add_transition(g_fsm, "Charge", "Active", FSM_PREDICATE_GROUP(transition_charge_to_active));
+    fsm_add_transition(g_fsm, "Charge", "Fault", FSM_PREDICATE_GROUP(transition_to_fault));
+    fsm_add_transition(g_fsm, "Fault", "Idle", FSM_PREDICATE_GROUP(transition_fault_to_idle));
 }
