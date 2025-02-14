@@ -2,10 +2,20 @@
 
 void ADBMS_UpdateValues(adbms_ *adbms)
 {
+    // chip wakeup
     adBmsWakeupIc(adbms->system.TOTAL_IC);
+
+    // start cell aux conversion, enable open wire check
+    adBms6830_Adax(AUX_OPEN_WIRE_DETECTION, OPEN_WIRE_CURRENT_SOURCE, AUX_CH_TO_CONVERT);
+
+    // start cell voltage conversion, enable open wire check
+    adBms6830_Adsv(CONTINUOUS, DCP_OFF, CELL_OPEN_WIRE_DETECTION);
+
     // get voltages from ADBMS
     adBmsReadData(adbms->system.TOTAL_IC, adbms->system.IC, RDCVALL, Cell, NONE);
+
     // get temp from ADBMS
+    adBmsReadData(adbms->system.TOTAL_IC, adbms->system.IC, RDASALL, Aux, NONE);
 
     // run open wire check -> have to look into
 
@@ -38,7 +48,26 @@ void ADBMS_CalculateValues(adbms_ *adbms)
     adbms->avg_v = adbms->total_v / (adbms->system.TOTAL_IC * 16);
 
     // calculate the total, max, and min temp
+    adbms->total_temp = 0;
+    adbms->max_temp = 0;
+    adbms->min_temp = 100;
+    for (int i = 0; i < adbms->system.TOTAL_IC; i++)
+    {
+        for (int j = 2; j < 12; j++)
+        {
+            adbms->total_temp += adbms->system.IC[i].aux.a_codes[j];
+            if (adbms->system.IC[i].aux.a_codes[j] > adbms->max_temp)
+            {
+                adbms->max_temp = adbms->system.IC[i].aux.a_codes[j];
+            }
+            if (adbms->system.IC[i].aux.a_codes[j] < adbms->min_temp)
+            {
+                adbms->min_temp = adbms->system.IC[i].aux.a_codes[j];
+            }
+        }
+    }
     // calculate the avg temp
+    adbms->avg_temp = adbms->total_temp / (adbms->system.TOTAL_IC * 10);
 }
 
 cell ADBMS_Initialize(uint8_t ic_count)
