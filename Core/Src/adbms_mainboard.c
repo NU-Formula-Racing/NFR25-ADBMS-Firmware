@@ -20,10 +20,10 @@ void adbms_mainbaord_setup()
     // FMS Init
 
     adbms.system = ADBMS_Initialize(1);
-    fsm_context_t context = {0};
+    //fsm_context_t context = {0};
     g_fsm = FSM_CREATE(&context);
-    // FSMAddStates();
-    // FSMAddTransitions();
+    FSMAddStates();
+    FSMAddTransitions();
 
     // initialize the timer group with adbms_mainboard_loop
 }
@@ -70,16 +70,14 @@ void CheckFaults()
     // check external kill fault;
     // check timeout fault; (watchdog not fed)
     
-    fault_ = undervoltage_fault_ || overvoltage_fault_ || overvoltage_fault_ ||
-             overvoltage_fault_ || undervoltage_fault_ || external_kill_fault_ ||
-             timeout_fault_;
+    ((fsm_context_t *)context)->fault_ = CheckADInternalFault() || external_kill_fault_ || timeout_fault_;
     // raise fault flag if any fault is true;
 }
 
 // FSM Functions //
 
 // On_Enters
-void idle_on_enter()
+void idle_on_enter(fsm_t *fsm, void *context)
 {
     printf("entering idle...\n");
 
@@ -90,7 +88,7 @@ void idle_on_enter()
 
     // send idle msg;
 }
-void precharge_on_enter()
+void precharge_on_enter(fsm_t *fsm, void *context)
 {
     printf("entering precharge...\n");
 
@@ -99,7 +97,7 @@ void precharge_on_enter()
     // turn on Pre contactor;
     HAL_GPIO_WritePin(GPIOA, Contactor_Pre_ctrl_pin, GPIO_PIN_SET);
 }
-void active_on_enter()
+void active_on_enter(fsm_t *fsm, void *context)
 {
     printf("entering active...\n");
     // turn on N contactor;
@@ -111,12 +109,12 @@ void active_on_enter()
     // send active msg;
 
 }
-void charge_on_enter()
+void charge_on_enter(fsm_t *fsm, void *context)
 {
     printf("entering charge...\n");
     // send initial/start msg to charger;
 }
-void fault_on_enter()
+void fault_on_enter(fsm_t *fsm, void *context)
 {
     printf("entering fault...\n");
     // open (turn off) all contactors;
@@ -127,13 +125,13 @@ void fault_on_enter()
 }
 
 // On_Updates
-void idle_on_update() {}
-void precharge_on_update()
+void idle_on_update(fsm_t *fsm, void *context) {}
+void precharge_on_update(fsm_t *fsm, void *context)
 {
     // get inverter voltage;
 }
-void active_on_update() {}
-void charge_on_update()
+void active_on_update(fsm_t *fsm, void *context) {}
+void charge_on_update(fsm_t *fsm, void *context)
 {
     /*
     do actual implementation later
@@ -146,33 +144,33 @@ void charge_on_update()
     }
     */
 }
-void fault_on_update() {}
+void fault_on_update(fsm_t *fsm, void *context) {}
 
 // On_Exits
-void idle_on_exit() { printf("exiting idle..."); }
-void precharge_on_exit() { printf("exiting precharge..."); }
-void active_on_exit() { printf("exiting active..."); }
-void charge_on_exit() { printf("exiting charge..."); }
-void fault_on_exit() { printf("exiting fault..."); }
+void idle_on_exit(fsm_t *fsm, void *context) { printf("exiting idle..."); }
+void precharge_on_exit(fsm_t *fsm, void *context) { printf("exiting precharge..."); }
+void active_on_exit(fsm_t *fsm, void *context) { printf("exiting active..."); }
+void charge_on_exit(fsm_t *fsm, void *context) { printf("exiting charge..."); }
+void fault_on_exit(fsm_t *fsm, void *context) { printf("exiting fault..."); }
 
 // Predicates
 
 // Transition to idle
-bool transition_active_to_idle()
+bool transition_active_to_idle(fsm_t *fsm, void *context)
 {
     if (/*ECU or charger requests idle*/true)
         return true;
     return false;
 }
-bool transition_fault_to_idle()
+bool transition_fault_to_idle(fsm_t *fsm, void *context)
 {
-    if (!fault_)
+    if (!((fsm_context_t *)context)->fault_)
         return true;
     return false;
 }
 
 // Transition to precharge
-bool transition_idle_to_precharge()
+bool transition_idle_to_precharge(fsm_t *fsm, void *context)
 {
     if (/*ECU / Charger signals precharge transition*/true)
         return true;
@@ -180,14 +178,14 @@ bool transition_idle_to_precharge()
 }
 
 // Transition to active
-bool transition_precharge_to_active()
+bool transition_precharge_to_active(fsm_t *fsm, void *context)
 {
     if (/*ECU signals active transition*/true)
         return true;
     return false;
 }
 
-bool transition_charge_to_active()
+bool transition_charge_to_active(fsm_t *fsm, void *context)
 {
     if (/*charge bit unset*/true)
         return true;
@@ -195,7 +193,7 @@ bool transition_charge_to_active()
 }
 
 // Transition to charge
-bool transition_active_to_charge()
+bool transition_active_to_charge(fsm_t *fsm, void *context)
 {
     if (/*charge pin is high*/true)
         return true;
@@ -203,9 +201,9 @@ bool transition_active_to_charge()
 }
 
 // Transition to fault
-bool transition_to_fault()
+bool transition_to_fault(fsm_t *fsm, void *context)
 {
-    if (fault_)
+    if (((fsm_context_t *)context)->fault_)
         return true;
     return false;
 }

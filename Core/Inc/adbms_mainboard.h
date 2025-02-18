@@ -8,7 +8,7 @@ fsm_t *g_fsm;
 typedef struct fsm_context
 {
     // something something
-    int stamina;
+    bool fault_;
 } fsm_context_t;
 // placeholder
 
@@ -19,7 +19,6 @@ bool overtemperature_fault_ = false;
 bool overcurrent_fault_ = false;
 bool external_kill_fault_ = false;
 bool timeout_fault_ = false;
-bool fault_ = false;
 
 
 void adbms_mainboard_setup();
