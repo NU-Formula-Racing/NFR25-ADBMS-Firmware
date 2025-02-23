@@ -21,5 +21,13 @@ bool external_kill_fault_ = false;
 bool timeout_fault_ = false;
 
 
+CAN_RxHeaderTypeDef RxHeader_;
+uint8_t rxData_[8];
+
+CAN_TxHeaderTypeDef TxHeaderSOE_;
+uint8_t txDataSOE_[8];
+
+uint32_t TxMailBox_;
+
 void adbms_mainboard_setup();
 void adbms_mainboard_loop();

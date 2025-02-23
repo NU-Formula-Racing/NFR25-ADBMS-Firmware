@@ -1,4 +1,5 @@
 #include "adbms_mainboard.h"
+#include "adbms_can.h"
 #define FSM_IMPL
 adbms_ adbms;
 
@@ -13,7 +14,12 @@ void adbms_mainbaord_setup()
     // initialize the contactors;
     // initialize ad chip;
 
-    // initialize CAN; // do later
+    // initialize CAN
+    HAL_CAN_Start(&hcan1);
+
+    // Enable notifications (interrupts) for CAN, uses FIFO scheduling to receive msgs
+    HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING);
+
     // add the CAN to the timer group with a different timer (one for drive, one for data)
     // initialize Charger; // do later
 
@@ -35,6 +41,22 @@ void adbms_mainboard_loop()
     UpdateValues();
     CheckFaults();
     fsm_run();
+}
+
+void initialize_can_headers() {
+    // SOE header initialization
+    TxHeaderSOE_.StdId = 0x173;
+    TxHeaderSOE_.IDE = CAN_ID_STD;
+    TxHeaderSOE_.RTR = CAN_RTR_DATA;
+    TxHeaderSOE_.DLC = 8; // we're sending 8 bytes of data for SOE
+}
+
+void add_can_messages() {
+    
+}
+
+void add_soe_can_data() {
+    
 }
 
 void UpdateValues()
